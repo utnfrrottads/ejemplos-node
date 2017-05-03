@@ -1,0 +1,5 @@
+'a'
+'blanco'
+15
+true
+{nombre:"juan",apellido:"perez"}
