@@ -13,14 +13,10 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(methodOverride());
 
-//require('./app/routes')(app, {});
 app.use(require('./app/routes'));
 
 var router=express.Router();
 
-//router.get('/',(req,res) => {
-//  res.send('home');
-//});
 
 app.use(router);
 
