@@ -19,4 +19,5 @@ Pet.find({name:"Firulais"})
         jp.save(function(err){if(err) return handleError(err);});
       })
       .catch(err =>console.log(err))
-  });
+  })
+  .catch(err =>console.log(err));
