@@ -1,14 +1,31 @@
+var mongoose = require('mongoose');
+var router=require('express').Router();
+var User = mongoose.model('client');
 
-var router=require('express').Router()
+var ObjectId = mongoose.Types.ObjectId;
 
 router.get('/', (req, res, next) => {
-  res.send("get clients");
+  User.find({})
+    .then(clients =>{
+        if(!clients){ return res.sendStatus(401); }
+        return res.json({'clients': clients})
+    })
+    .catch(next);
+    //res.send("get clients");
     //next();
 });
 
 router.get('/:id', (req, res, next) => {
+  //let id =  new ObjectId(req.params.id);
   let id = req.params.id
-  res.send("get client:" + id);
+  User.findById(id)
+    .populate('pets')
+    .then(client =>{
+        if(!client){ return res.sendStatus(401); }
+        return res.json({'client': client})
+    })
+    .catch(next);
+    //res.send("get client:" + id);
     //next();
 });
 
@@ -27,8 +44,10 @@ router.put('/:id', (req, res, next) => {
 });
 
 router.delete('/:id', (req, res, next) => {
-  let id = req.params.id
-  res.send("delete client:"+id);
+  let id = req.params.id;
+  User.findByIdAndRemove(id);
+  res.sendStatus(200);
+    //res.send("delete client:"+id);
     //next();
 });
 
