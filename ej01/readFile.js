@@ -9,4 +9,4 @@ fs.readFile('items.txt','utf8',(err,data) => {
   }
 });
 
-console.log("fileData:\n"+fileData);
+console.log("sin callback fileData:\n"+fileData);

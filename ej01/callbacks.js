@@ -23,5 +23,7 @@ function hacerAlgo(callback, item){
 }
 
 hacerAlgo(log,lista);
+console.log("\n\n");
 hacerAlgo(log2,lista);
+console.log("\n\n");
 hacerAlgo(log3,lista);
